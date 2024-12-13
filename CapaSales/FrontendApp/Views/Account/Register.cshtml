@@ -1,0 +1,151 @@
+﻿@model FrontendApp.Models.RegisterViewModel
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="text-center mb-0">Registro de Usuario</h3>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Register" method="post">
+                        @* Fila para Nombre y Apellido *@
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label">Nombre</label>
+                                    <input asp-for="Nombre" class="form-control" required
+                                           placeholder="Ingrese su nombre" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label">Apellido</label>
+                                    <input asp-for="Apellido" class="form-control" required
+                                           placeholder="Ingrese su apellido" />
+                                </div>
+                            </div>
+                        </div>
+
+                        @* Fila para Género y Estado Civil *@
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label">Género</label>
+                                    <select asp-for="Genero" class="form-select" required>
+                                        <option value="">Seleccione su género...</option>
+                                        <option value="Masculino">Masculino</option>
+                                        <option value="Femenino">Femenino</option>
+                                        <option value="Otro">Otro</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label">Estado Civil</label>
+                                    <select asp-for="EstadoCivil" class="form-select">
+                                        <option value="Soltero">Soltero</option>
+                                        <option value="Casado">Casado</option>
+                                        <option value="Divorciado">Divorciado</option>
+                                        <option value="Viudo">Viudo</option>
+                                        <option value="Otro">Otro</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        @* Fila para Lugar de Nacimiento y Nacionalidad *@
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label">Lugar de Nacimiento</label>
+                                    <input asp-for="LugarNacimiento" class="form-control"
+                                           placeholder="Ingrese su lugar de nacimiento" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label">Nacionalidad</label>
+                                    <input asp-for="Nacionalidad" class="form-control"
+                                           placeholder="Ingrese su nacionalidad" />
+                                </div>
+                            </div>
+                        </div>
+
+                        @* Fila para Ocupación y Teléfono *@
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label">Ocupación</label>
+                                    <input asp-for="Ocupacion" class="form-control"
+                                           placeholder="Ingrese su ocupación" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label">Teléfono</label>
+                                    <input asp-for="Telefono" class="form-control"
+                                           placeholder="Ingrese su teléfono" />
+                                </div>
+                            </div>
+                        </div>
+
+                        @* Fila para Email *@
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">Email</label>
+                                    <input asp-for="Email" type="email" class="form-control" required
+                                           placeholder="ejemplo@correo.com" />
+                                </div>
+                            </div>
+                        </div>
+
+                        @* Fila para Contraseña *@
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">Contraseña</label>
+                                    <input asp-for="Contrasena" type="password" class="form-control" required
+                                           placeholder="Ingrese su contraseña" />
+                                </div>
+                            </div>
+                        </div>
+
+                        @* Botones *@
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn btn-primary px-5">
+                                    <i class="fas fa-user-plus me-2"></i>Registrarse
+                                </button>
+                                <a asp-action="Login" class="btn btn-secondary px-5 ms-2">
+                                    <i class="fas fa-arrow-left me-2"></i>Volver
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Validación del formulario usando jQuery
+        $(document).ready(function () {
+            $('form').submit(function (e) {
+                var password = $('#Contrasena').val();
+
+                // Validar longitud mínima de la contraseña
+                if (password.length < 6) {
+                    alert('La contraseña debe tener al menos 6 caracteres');
+                    e.preventDefault();
+                    return false;
+                }
+
+                return true;
+            });
+        });
+    </script>
+}
